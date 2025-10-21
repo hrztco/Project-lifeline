@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Lifeline</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:"Helvetica Neue",sans-serif; }
+    body { background:#F9F9F9; color:#333; scroll-behavior:smooth; overflow-x:hidden; }
+
+    /* NAVBAR */
+    .navbar { position:fixed; top:0; width:100%; background:rgba(249,249,249,0.9); backdrop-filter:blur(12px); box-shadow:0 2px 10px rgba(0,0,0,0.05); z-index:1000; display:flex; justify-content:center; align-items:center; padding:1rem 2rem; }
+    .logo { position:absolute; left:40px; font-weight:700; font-size:1.3rem; color:#2E7D32; }
+    .navbar ul { display:flex; list-style:none; }
+    .navbar a { text-decoration:none; color:#333; margin:0 1.2rem; font-weight:500; transition:color 0.3s, transform 0.3s; }
+    .navbar a:hover, .navbar a.active { color:#4CAF50; transform:scale(1.05); }
+
+    /* SECTIONS */
+    .section { display:flex; align-items:center; justify-content:space-between; padding:8rem 10%; min-height:100vh; gap:3rem; background-attachment:fixed; background-size:cover; background-position:center; transition:background-image 1s ease-in-out, background-position 0.3s ease-out; }
+    .section:nth-child(even) { flex-direction:row-reverse; }
+    .text { flex:1; color:white; font-size:1.3rem; line-height:1.6; }
+    .text h1, .text h2 { font-size:3rem; color:white; margin-bottom:1rem; }
+    .text ul { list-style: disc; padding-left:1.5rem; }
+    .text ul li { color: #e0e0e0; font-size:1.2rem; margin-bottom:0.8rem; }
+
+    .image { flex:1; display:flex; justify-content:center; }
+
+    /* Section images animation */
+    .section img { width:100%; max-width:450px; height:300px; object-fit:cover; border-radius:20px; box-shadow:0 10px 25px rgba(0,0,0,0.1); opacity:0; transform:translateY(60px) scale(0.95); transition:transform 1s ease, opacity 1s ease, filter 0.5s ease; }
+    .section.show img { opacity:1; transform:translateY(0) scale(1); }
+    .section img:hover { transform:scale(1.03); filter:brightness(1.05); }
+
+    /* TEAM SECTION */
+    .team-section { display:flex; flex-direction:column; text-align:center; align-items:center; padding:5rem 2rem; position:relative; z-index:1; }
+    .team-header { margin-bottom:3rem; z-index:2; color:#fff; }
+    .team-grid { display:flex; gap:2rem; justify-content:center; flex-wrap:wrap; z-index:2; }
+    .member { background:rgba(255,255,255,0.9); border-radius:20px; padding:1.5rem; width:180px; box-shadow:0 8px 20px rgba(0,0,0,0.05); text-align:center; opacity:0; transform:translateY(50px); transition:transform 0.5s, box-shadow 0.5s, opacity 1s; }
+    .member.show { opacity:1; transform:translateY(0); }
+    .member:hover { transform:translateY(-8px); box-shadow:0 10px 25px rgba(0,0,0,0.2); }
+    .member img { width:120px; height:120px; object-fit:cover; border-radius:50%; border:3px solid #2E7D32; margin-bottom:1rem; }
+    .member h3 { margin-top:0.8rem; font-size:1.1rem; color:#2E7D32; }
+    .member p { margin-top:0.3rem; font-size:1rem; color:#555; }
+
+    /* VIDEO CONTAINER */
+    .video-container { margin-top:3rem; display:flex; justify-content:center; width:100%; opacity:0; transform:translateY(60px); transition:opacity 1s ease, transform 1s ease; }
+    .video-container.show { opacity:1; transform:translateY(0); }
+    iframe { border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.1); }
+
+    /* FADE-IN TEXT ANIMATION */
+    .fade-in { opacity:0; transform:translateY(40px) scale(0.98); transition:opacity 1s ease-out, transform 1s ease-out; }
+    .fade-in.show { opacity:1; transform:translateY(0) scale(1); }
+
+    footer { text-align:center; padding:2rem; background:#E8F5E9; color:#2E7D32; font-weight:500; }
+
+    /* Responsive */
+    @media(max-width:1200px){ .team-grid{gap:1.5rem;} }
+    @media(max-width:768px){ .section{flex-direction:column; padding:6rem 5%;} .section:nth-child(even){flex-direction:column;} .image img{max-width:100%;height:auto;} .team-grid{flex-direction:column;align-items:center;} .member{width:60%;} }
+    @media(max-width:480px){ .member{width:80%;} }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Project Lifeline</div>
+    <ul>
+      <li><a href="#home">Home Page</a></li>
+      <li><a href="#challenge">The Challenge</a></li>
+      <li><a href="#solutions">STEM Solutions</a></li>
+      <li><a href="#action">Take Action</a></li>
+      <li><a href="#group">About the Group</a></li>
+    </ul>
+  </nav>
+
+  <!-- HOME -->
+  <section class="section" id="home" style="background-image:url('1.png')">
+    <div class="text fade-in">
+      <h1>Good Health and Well-Being</h1>
+      <p>SDG 3 focuses on ensuring good health and well-being for everyone. It’s about access to healthcare, preventing diseases, and living healthier lives.</p>
+    </div>
+    <div class="image fade-in">
+      <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528" alt="Health Image" />
+    </div>
+  </section>
+
+  <!-- CHALLENGE -->
+  <section class="section" id="challenge" style="background-image:url('2.png')">
+    <div class="text fade-in">
+      <h2>The Challenge</h2>
+      <p><strong>Global Problems:</strong></p>
+      <ul>
+        <li>Millions of children die each year from preventable diseases.</li>
+        <li>Mental health issues like depression and suicide continue to rise.</li>
+        <li>Many people still lack access to clean water, vaccines, and hospitals.</li>
+      </ul>
+      <p><strong>Local Problems (Philippines):</strong></p>
+      <ul>
+        <li>Rural areas often lack hospitals, doctors, and medicine.</li>
+        <li>Diseases like heart problems, diabetes, and obesity are becoming more common.</li>
+        <li>Mental health issues among students are increasing, but many don’t seek help due to stigma.</li>
+      </ul>
+    </div>
+    <div class="chart-container fade-in" style="flex:1; min-height:300px;">
+      <canvas id="challengeChart"></canvas>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const ctx = document.getElementById('challengeChart').getContext('2d');
+      const labels = ['Child Mortality','Mental Health','Lack of Clean Water & Hospitals','Rural Healthcare (Philippines)','Chronic Diseases (Philippines)','Student Mental Health (Philippines)'];
+      const dataValues = [9,7,8,6,5,7];
+      const challengeChart = new Chart(ctx, {
+        type:'line',
+        data:{ labels:labels, datasets:[{label:'Severity of Challenge', data:dataValues, borderColor:'#2E7D32', backgroundColor:'rgba(46,125,50,0.2)', fill:true, tension:0.4, pointRadius:0 }] },
+        options:{ responsive:true, plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true,max:10}}, animation:{duration:1000} }
+      });
+      const chartSection = document.querySelector('#challenge .chart-container');
+      window.addEventListener('scroll',()=>{
+        const rect = chartSection.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        if(rect.top<windowHeight){
+          const progress = Math.min(1,(windowHeight-rect.top)/rect.height);
+          challengeChart.data.datasets[0].pointRadius = dataValues.map(()=>progress*6);
+          challengeChart.update();
+        }
+      });
+    </script>
+  </section>
+
+  <!-- STEM SOLUTIONS -->
+  <section class="section" id="solutions" style="background-image:url('3.png')">
+    <div class="text fade-in">
+      <h2>STEM Solutions</h2>
+      <ul>
+        <li>1. Using AI in Detecting Diseases - Specialized Artificial Intelligence can analyze medical scans to detect diseases to prevent it from spreading further.</li>
+        <li>2. Robotics - Advanced technology such as robots can help assist in healthcare, which can improve the public's safety in the medical fields.</li>
+        <li>3. Biotechnology - Improving equipment on biological systems allows us to develop or create products that benefit humanity.</li>
+        <li>4. Health Devices - Devices like fitness trackers and smartwatches can help monitor heart rate and physical activity, ensuring that we are able to maintain a healthy lifestyle.</li>
+      </ul>
+    </div>
+    <div class="chart-container fade-in" style="flex:1; min-height:300px;">
+      <canvas id="solutionsChart"></canvas>
+    </div>
+    <script>
+      const ctx2 = document.getElementById('solutionsChart').getContext('2d');
+      const solutionsChart = new Chart(ctx2, {
+        type:'bar',
+        data:{ labels:['AI Detection','Robotics','Biotechnology','Health Devices'], datasets:[{label:'Impact Score', data:[8,7,6,7], backgroundColor:'rgba(46,125,50,0.6)', borderColor:'#2E7D32', borderWidth:2}] },
+        options:{ responsive:true, scales:{y:{beginAtZero:true,max:10}}, plugins:{legend:{display:false}} }
+      });
+    </script>
+  </section>
+
+  <!-- TAKE ACTION -->
+  <section class="section" id="action" style="background-image:url('4.png')">
+    <div class="text fade-in">
+      <h2>Take Action</h2>
+      <ul>
+        <li>1. Promote Mental Health Awareness - Make sure to openly talk about mental health and encourage others to do the same to help those who need emotional and mental support.</li>
+        <li>2. Encourage Healthy Lifestyles - A healthy lifestyle can lead to a longer and happier life and inspires others to do the same.</li>
+        <li>3. Raise Awareness to Health Risks - Raising awareness can help save lives by helping people to be informed about the risks and make safer choices.</li>
+        <li>4. Promote Clean and Safe Environments - A healthier environment can help improve each other's lives.</li>
+      </ul>
+      <p style="margin-top:1rem; font-weight:bold; font-size:1.3rem;">Call to Action: “Remember, our health is our wealth, let's take small steps every day to live better and help others do the same. Together, we can build a healthier and happier community!”</p>
+    </div>
+    <div class="image fade-in" style="margin-top:3rem;">
+      <iframe width="960" height="540" src="https://www.youtube.com/embed/z_jjX-i45hU" title="Project Lifeline Video" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- ABOUT THE GROUP -->
+  <section class="team-section" id="group" style="background-image: url('6.png'); background-size: cover; background-position: center;">
+    <div class="team-header">
+      <h2>About the Group</h2>
+    </div>
+    <div class="team-grid">
+      <div class="member">
+        <img src="mika.png" alt="Leader">
+        <h3>Benlot</h3>
+        <p>Project Leader</p>
+      </div>
+      <div class="member">
+        <img src="chiyami.png" alt="Researcher">
+        <h3>Camocamo</h3>
+        <p>Content Researcher</p>
+      </div>
+      <div class="member">
+        <img src="ducay.png" alt="Writer">
+        <h3>Ducay</h3>
+        <p>Content Writer</p>
+      </div>
+      <div class="member">
+        <img src="hurst.png" alt="Web Designer">
+        <h3>Letigio</h3>
+        <p>Web Designer</p>
+      </div>
+      <div class="member">
+        <img src="dom.png" alt="Multimedia Specialist">
+        <h3>Medalla</h3>
+        <p>Multimedia Specialist</p>
+      </div>
+      <div class="member">
+        <img src="enot.png" alt="QA Editor">
+        <h3>Enot</h3>
+        <p>Quality Assurance Editor</p>
+      </div>
+    </div>
+    <div class="video-container">
+      <iframe width="960" height="540" src="https://www.youtube.com/embed/JqMsaMwgCGU" title="Project Lifeline Video" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <footer>© 2025 Project Lifeline — SDG 3 Good Health and Well-Being </footer>
+
+  <script>
+    // Fade-in on scroll
+    const elementsToAnimate = document.querySelectorAll('.fade-in, .section img, .member, .video-container, .text');
+    const observerOptions = { threshold:0.2 };
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('show'); } });
+    }, observerOptions);
+    elementsToAnimate.forEach(el=>observer.observe(el));
+
+    // Parallax background
+    const sections = document.querySelectorAll('.section');
+    window.addEventListener('scroll', ()=>{
+      sections.forEach(section=>{
+        const speed = 0.3;
+        const offset = window.pageYOffset * speed;
+        section.style.backgroundPosition = `center ${-offset}px`;
+      });
+    });
+
+    // Navbar smooth scroll
+    const navLinks = document.querySelectorAll(".navbar a");
+    navLinks.forEach(link => {
+      link.addEventListener("click", e=>{
+        e.preventDefault();
+        const targetId = link.getAttribute("href").substring(1);
+        const targetElement = document.getElementById(targetId);
+        if(targetElement){
+          const navbarHeight = document.querySelector('.navbar').offsetHeight;
+          window.scrollTo({top:targetElement.offsetTop-navbarHeight, behavior:'smooth'});
+        }
+      });
+    });
+  </script>
+</body>
+</html>
